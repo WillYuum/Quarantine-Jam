@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     int currentHealth;
     Vector2 lookDirection = new Vector2(1, 0);
 
+    public bool playerIsOnTable = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,6 +21,43 @@ public class Player : MonoBehaviour
     private void Update()
     {
         HandlePlayerMovement();
+        HandleTableInteraction();
+    }
+
+    private void HandleTableInteraction()
+    {
+        if (playerIsOnTable)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                productTablePlayerIsOn.TakeProduct();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                productTablePlayerIsOn.ThrowProductBack();
+            }
+        }
+    }
+
+    private bool isHoldingSameProduct()
+    {
+
+
+        return false;
+    }
+
+    [HideInInspector] public ProductTable productTablePlayerIsOn = null;
+    public void PlayerEnterTable(ProductTable typeOfTable)
+    {
+        playerIsOnTable = true;
+        productTablePlayerIsOn = typeOfTable;
+    }
+
+    public void PlayerLeaveTable()
+    {
+        playerIsOnTable = false;
+        productTablePlayerIsOn = null;
     }
 
     private void HandlePlayerMovement()
