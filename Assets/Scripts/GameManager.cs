@@ -29,9 +29,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public bool GameIsOn = false;
     public void StartGame()
     {
-        
+        GameIsOn = true;
+        StartCoroutine(NeighborhoodManager.instance.SpawnOrdersForFamilies());
     }
 
     public void LoseGame()

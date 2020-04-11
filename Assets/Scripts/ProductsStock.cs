@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProductsStock : MonoBehaviour
 {
@@ -12,9 +13,11 @@ public class ProductsStock : MonoBehaviour
 
     public float stockReductionDelay = 5.0f;
     private float currentTime = 0;
+    public Slider slider;
     // Start is called before the first frame update
     void Start()
     {
+        slider = gameObject.GetComponent<Slider>();
         currentStockAmount = maxStockAmount;
     }
 
@@ -28,7 +31,7 @@ public class ProductsStock : MonoBehaviour
 
     private void HandleDecreasingStockAmount()
     {
-        currentTime -= Time.deltaTime;
+        currentTime += Time.deltaTime;
         if(currentTime >= stockReductionDelay)
         {
             DecreaseStockAmount(amoutToReduceStock);
@@ -38,9 +41,15 @@ public class ProductsStock : MonoBehaviour
 
     private void DecreaseStockAmount(int amount)
     {
+        Debug.Log("decreased stock");
         currentStockAmount -= amount;
         //decrease the slider 
-
+        slider.value = currentStockAmount / maxStockAmount;
         //add color effect maybe
+
+        if(currentStockAmount <= 0)
+        {
+            GameManager.instance.LoseGame();
+        }
     }
 }
