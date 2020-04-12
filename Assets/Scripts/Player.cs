@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     {
         HandlePlayerMovement();
         HandleTableInteraction();
+        MakePlayerLookAtPointer();
     }
 
     private void HandleTableInteraction()
@@ -102,5 +103,14 @@ public class Player : MonoBehaviour
             Debug.Log("went through the door");
             MarketManager.instance.PlayerGoesOut();
         }
+    }
+
+    void MakePlayerLookAtPointer()
+    {
+        Vector2 mousePos = Input.mousePosition;
+        Vector2 playerPos = Camera.main.WorldToScreenPoint(this.transform.position);
+        Vector2 direction = new Vector2(mousePos.x, mousePos.y) - new Vector2(playerPos.x, playerPos.y);
+        float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+        this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
     }
 }
