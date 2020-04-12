@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        fader.canvasRenderer.SetAlpha(1f);
         StartGame();
     }
 
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         GameIsOn = true;
+        handleFadeOut();
         StartCoroutine(NeighborhoodManager.instance.SpawnOrdersForFamilies());
     }
 
@@ -63,19 +65,13 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public IEnumerator handleFader()
+    public void handleFadeIn()
     {
-        fader.GetComponent<Animation>().wrapMode = WrapMode.Once;
-        fader.GetComponent<Animation>().Play("FadeOut");
-        while (fader.GetComponent<Animation>().IsPlaying("FadeIn"))
-        {
-            yield return null;
-        }
-        fader.GetComponent<Animation>().Play("FadeIn");
-        while (fader.GetComponent<Animation>().IsPlaying("FadeIn"))
-        {
-            yield return null;
-        }
-        Debug.Log("DOne with animation");
+        fader.CrossFadeAlpha(0, 1, false);
+    }
+
+    public void handleFadeOut()
+    {
+        fader.CrossFadeAlpha(0,1, false);
     }
 }

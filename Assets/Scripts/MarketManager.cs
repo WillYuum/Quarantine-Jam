@@ -38,7 +38,7 @@ public class MarketManager : MonoBehaviour
 
     public void PlayerGoesOut()
     {
-        GameManager.instance.handleFader();
+        GameManager.instance.handleFadeIn();
         Debug.Log("You're outside");
 
     }
