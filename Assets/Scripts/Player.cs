@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
         if(other.name == "Door")
         {
             Debug.Log("went through the door");
-            GameManager.instance.handleFader();
+            MarketManager.instance.PlayerGoesOut();
         }
     }
 }

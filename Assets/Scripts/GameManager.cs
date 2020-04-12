@@ -63,20 +63,19 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void handleFader()
+    public IEnumerator handleFader()
     {
         fader.GetComponent<Animation>().wrapMode = WrapMode.Once;
         fader.GetComponent<Animation>().Play("FadeOut");
+        while (fader.GetComponent<Animation>().IsPlaying("FadeIn"))
+        {
+            yield return null;
+        }
         fader.GetComponent<Animation>().Play("FadeIn");
-        //while (fader.GetComponent<Animation>().IsPlaying("FadeIn"))
-        //{
-        //    yield return null;
-        //}
-        //fader.GetComponent<Animation>().wrapMode = WrapMode.Once;
-        //fader.GetComponent<Animation>().Play("FadeIn");
-        //while (fader.GetComponent<Animation>().IsPlaying("FadeIn"))
-        //{
-        //    yield return null;
-        //}
+        while (fader.GetComponent<Animation>().IsPlaying("FadeIn"))
+        {
+            yield return null;
+        }
+        Debug.Log("DOne with animation");
     }
 }
