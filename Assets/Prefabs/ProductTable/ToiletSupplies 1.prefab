@@ -15,7 +15,7 @@ GameObject:
   m_Layer: 0
   m_Name: ToiletSupplies 1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2019709864126629507}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 2.9, y: 0.18, z: 6.5742188}
-  m_LocalScale: {x: 0.044625, y: 0.056229, z: 0}
+  m_LocalScale: {x: 0.14648737, y: 0.60899657, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fa8dfc6c78a2d4e45bbc1b06e9fbdf19, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_Size: {x: 24, y: 24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2019709864126629506
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedProductTable: 6
   productSprite: {fileID: 21300000, guid: 96c10ec1fccf3e143833af03e546c070, type: 3}
+  productDisplayer: {fileID: 0}
 --- !u!61 &8259468099453427109
 BoxCollider2D:
   m_ObjectHideFlags: 0

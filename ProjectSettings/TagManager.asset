@@ -44,3 +44,6 @@ TagManager:
   - name: Slot
     uniqueID: 3588405931
     locked: 0
+  - name: Floor
+    uniqueID: 1706587713
+    locked: 0

@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance = null;
+    public Image fader;
+
 
     private void Awake()
     {
@@ -58,5 +61,22 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void handleFader()
+    {
+        fader.GetComponent<Animation>().wrapMode = WrapMode.Once;
+        fader.GetComponent<Animation>().Play("FadeOut");
+        fader.GetComponent<Animation>().Play("FadeIn");
+        //while (fader.GetComponent<Animation>().IsPlaying("FadeIn"))
+        //{
+        //    yield return null;
+        //}
+        //fader.GetComponent<Animation>().wrapMode = WrapMode.Once;
+        //fader.GetComponent<Animation>().Play("FadeIn");
+        //while (fader.GetComponent<Animation>().IsPlaying("FadeIn"))
+        //{
+        //    yield return null;
+        //}
     }
 }

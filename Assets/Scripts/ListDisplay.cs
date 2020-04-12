@@ -29,7 +29,7 @@ public class ListDisplay : MonoBehaviour
 
             Order order = currentOrders[i];
             Debug.Log("Test1" + slots[i].productType);
-            Debug.Log("Test2" + order.productOrdered);
+            Debug.Log("Test2" + productToAdd);
             Slot slot = slots[i];
             if (slot.isSatisfied == false)
             {
@@ -45,14 +45,34 @@ public class ListDisplay : MonoBehaviour
             else
             {
                 //play done animation
+                if (CheckIfListIsDone())
+                {
+                    MarketManager.instance.grabbedTheFullOrder = true;
+                }
             }
         }
     }
 
-    public bool CheckIfAllOrdersForProductsIsDone()
+    public bool CheckIfListIsDone()
     {
+        int fullfilledOrders = 0;
+        for (int i = 0; i < slots.Count; i++)
+        {
+            Slot slot = slots[i];
+            if (slot.isSatisfied)
+            {
+                fullfilledOrders += 1;
+            }
+        }
 
-        return false;
+        if(fullfilledOrders == currentOrders.Count)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 

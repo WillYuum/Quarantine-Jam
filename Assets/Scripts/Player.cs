@@ -94,4 +94,13 @@ public class Player : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.name == "Door")
+        {
+            Debug.Log("went through the door");
+            GameManager.instance.handleFader();
+        }
+    }
 }

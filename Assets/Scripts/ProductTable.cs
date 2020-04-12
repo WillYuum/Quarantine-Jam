@@ -22,7 +22,17 @@ public class ProductTable : MonoBehaviour
 
     public Product assignedProductTable;
     public Sprite productSprite;
-  
+
+    public GameObject productDisplayer;
+
+
+    private void Start()
+    {
+        Color tmp = productDisplayer.GetComponent<SpriteRenderer>().color;
+        tmp.a = 0.5f;
+        productDisplayer.GetComponent<SpriteRenderer>().color = tmp;
+    }
+
     public void TakeProduct()
     {
         Debug.Log($"took product from {assignedProductTable}");
@@ -41,6 +51,10 @@ public class ProductTable : MonoBehaviour
         {
             Debug.Log("Player is checking table");
             other.GetComponent<Player>().PlayerEnterTable(this);
+
+            Color tmp = productDisplayer.GetComponent<SpriteRenderer>().color;
+            tmp.a = 1f;
+            productDisplayer.GetComponent<SpriteRenderer>().color = tmp;
         }
     }
 
@@ -50,6 +64,10 @@ public class ProductTable : MonoBehaviour
         {
             Debug.Log("Player left table");
             other.GetComponent<Player>().PlayerLeaveTable();
+
+            Color tmp = productDisplayer.GetComponent<SpriteRenderer>().color;
+            tmp.a = 0.5f;
+            productDisplayer.GetComponent<SpriteRenderer>().color = tmp;
         }   
     }
 

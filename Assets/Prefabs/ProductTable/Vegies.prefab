@@ -15,7 +15,7 @@ GameObject:
   m_Layer: 0
   m_Name: Vegies
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7774064384867186340}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0.69, y: -2.47, z: 6.5742188}
-  m_LocalScale: {x: 0.044625, y: 0.056229, z: 0}
+  m_LocalScale: {x: 0.18029213, y: 0.67025465, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fa8dfc6c78a2d4e45bbc1b06e9fbdf19, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_Size: {x: 24, y: 24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &7774064384867186341
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   assignedProductTable: 7
   productSprite: {fileID: 21300000, guid: 6f7e1dea9e2bcec4e9fff4b88fa390fe, type: 3}
+  productDisplayer: {fileID: 0}
 --- !u!61 &395176904162766210
 BoxCollider2D:
   m_ObjectHideFlags: 0
