@@ -31,20 +31,41 @@ public class Family : MonoBehaviour
         
     }
 
+    public static void ShuffleArray<T>(T[] arr)
+    {
+        for (int i = arr.Length - 1; i > 0; i--)
+        {
+            int r = Random.Range(0, i);
+            T tmp = arr[i];
+            arr[i] = arr[r];
+            arr[r] = tmp;
+        }
+    }
+
     public Order[] CreateOrder()
     {
         int[] array = { 1, 2, 3, 4, 5, 6, 7 };
+        ShuffleArray<int>(array);
         List<int> productToSelect = new List<int>(array);
+        productToSelect.ForEach(delegate (int num)
+        {
+            Debug.Log(num);
+        });
+            Debug.Log("Done");
         Order[] temp_order = new Order[amountOfOrders];
         for (int i = 0; i < amountOfOrders; i++)
         {
-            Product selectedProduct = (Product)Random.Range(0, productToSelect.Count-1);
-            productToSelect.RemoveAt((int)selectedProduct);
-            Debug.Log("selectedProduct " + selectedProduct);
+            //roduct selectedProduct = (Product)Random.Range(1, productToSelect.Count-1);
+            Product selectedProduct = (Product)productToSelect[i];
+            productToSelect.RemoveAt(i);
             Order order = new Order(familytype, selectedProduct, AssignImageToProduct(selectedProduct));
+            ListDisplay.instance.slots[i].productType = order.productOrdered;
             temp_order[i] = order;
         }
-
+        productToSelect.ForEach(delegate (int num)
+        {
+            Debug.Log(num);
+        });
         return temp_order;
     }
 
@@ -72,6 +93,29 @@ public class Family : MonoBehaviour
                 return GameManager.instance.Dairy;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Player")
+        {
+            Debug.Log("Player is entering house");
+            other.GetComponent<Player>().PlayerEnterHouse(this);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Player")
+        {
+            Debug.Log("Player left house");
+            other.GetComponent<Player>().PlayerLeaveHouse();
+        }
+    }
+
+    public void DeliverOrder()
+    {
+        //increment value of how much people delivered
+    }
 }
 
 public class Order
@@ -96,9 +140,17 @@ public class Order
 
     private int RandomizeAmountOfProductWanted()
     {
-        int[] randomAmount = { 5, 7, 15 };
-        int random = Random.Range(0, randomAmount.Length-1);
-        return randomAmount[random];
-
+        if(productOrdered == Product.ToiletSupplies)
+        {
+            int[] amountOfToiletSupplies = { 15, 18, 25 };
+            int random = Random.Range(0, amountOfProductOrdered-1);
+            return amountOfToiletSupplies[random];
+        }
+        else
+        {
+            int[] randomAmount = { 5, 7, 15 };
+            int random = Random.Range(0, randomAmount.Length - 1);
+            return randomAmount[random];
+        }
     }
 }

@@ -36,7 +36,7 @@ public class BagSlot : MonoBehaviour
         
     }
 
-    public void AddToBag(Product typeOfProductSelected, Sprite productImage)
+    /*public void AddToBag(Product typeOfProductSelected, Sprite productImage)
     {
         Debug.Log("Test" + typeOfProductSelected);
         for (int i = 0; i < bag.Count; i++)
@@ -61,7 +61,7 @@ public class BagSlot : MonoBehaviour
             }
            
         }
-    }
+    }*/
 }
 
 

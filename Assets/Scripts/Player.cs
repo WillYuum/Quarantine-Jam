@@ -32,19 +32,16 @@ public class Player : MonoBehaviour
             {
                 productTablePlayerIsOn.TakeProduct();
             }
+        }
 
-            if (Input.GetKeyDown(KeyCode.Q))
+        if (playerIsInHouse)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                productTablePlayerIsOn.ThrowProductBack();
+                //finish delivery
+                familyVisited.DeliverOrder();
             }
         }
-    }
-
-    private bool isHoldingSameProduct()
-    {
-
-
-        return false;
     }
 
     [HideInInspector] public ProductTable productTablePlayerIsOn = null;
@@ -78,6 +75,19 @@ public class Player : MonoBehaviour
         position = position + move * speed * Time.deltaTime;
 
         rb.MovePosition(position);
+    }
+
+    [HideInInspector] public bool playerIsInHouse = false;
+    private Family familyVisited;
+    public void PlayerEnterHouse(Family FamilyVisited)
+    {
+        playerIsInHouse = true;
+        familyVisited = FamilyVisited;
+    }
+
+    public void PlayerLeaveHouse()
+    {
+        playerIsInHouse = false;
     }
 
     public void playerTakeDamae(int amount)

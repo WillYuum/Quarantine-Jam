@@ -35,7 +35,7 @@ public class NeighborhoodManager : MonoBehaviour
     {
         
     }
-
+    [HideInInspector] public List<Order> currentOrders = new List<Order>();
     //select family to spawn
     public void FamilyWantToOrder()
     {
@@ -50,7 +50,7 @@ public class NeighborhoodManager : MonoBehaviour
                 {
                     Order order = orders[y];
                     ListDisplay.instance.AssignOrdersInSlot(order.amountOfProductOrdered,order.productSprite);
-
+                    currentOrders.Add(order);
                 }
             }
 

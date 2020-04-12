@@ -4,23 +4,31 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
-    [HideInInspector] public bool isEmpty;
+    [HideInInspector] public bool isSatisfied;
     public GameObject productSprite;
+    public TextMesh currentProductAmount;
     public TextMesh textAmountOfProduct;
     [HideInInspector]public int currentAmountOfProduct = 0;
     [HideInInspector]public Product productType;
 
+    public GameObject counter;
 
     private void Start()
     {
-        isEmpty = true;
+        counter.SetActive(false);
+        isSatisfied = false;
+        currentProductAmount.text = currentAmountOfProduct.ToString();
         textAmountOfProduct.text = currentAmountOfProduct.ToString();
     }
 
     public void IncreaseAmountOfProduct()
     {
+        if (isSatisfied)
+        {
+            return;
+        }
         currentAmountOfProduct += 1;
-        textAmountOfProduct.text = currentAmountOfProduct.ToString();
+        currentProductAmount.text = currentAmountOfProduct.ToString();
     }
 
     public void DecreaseAmountOfProduct()
@@ -31,7 +39,6 @@ public class Slot : MonoBehaviour
         if(currentAmountOfProduct <= 0)
         {
             RemoveImageProduct();
-            isEmpty = true;
             productType = Product.None;
             textAmountOfProduct.text = "0";
         }
@@ -40,6 +47,7 @@ public class Slot : MonoBehaviour
     public void AddImage(Sprite productImage)
     {
         productSprite.GetComponent<SpriteRenderer>().sprite = productImage;
+        counter.SetActive(true);
     }
     private void RemoveImageProduct()
     {
@@ -50,5 +58,6 @@ public class Slot : MonoBehaviour
     {
         textAmountOfProduct.text = amount.ToString();
     }
+
 
 }
