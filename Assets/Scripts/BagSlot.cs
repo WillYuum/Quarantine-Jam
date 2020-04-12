@@ -38,13 +38,14 @@ public class BagSlot : MonoBehaviour
 
     public void AddToBag(Product typeOfProductSelected, Sprite productImage)
     {
+        Debug.Log("Test" + typeOfProductSelected);
         for (int i = 0; i < bag.Count; i++)
         {
             if (bag[i].isEmpty)
             {
                 Debug.Log("Added product");
                 //assign Image
-                //bag[i].AddImage(productImage);
+                bag[i].AddImage(productImage);
                 //increment number
                 bag[i].isEmpty = false;
                 bag[i].productType = typeOfProductSelected;
@@ -61,13 +62,6 @@ public class BagSlot : MonoBehaviour
            
         }
     }
-
-
-    public void AssignProductIntoBag()
-    {
-       
-    }
-
 }
 
 

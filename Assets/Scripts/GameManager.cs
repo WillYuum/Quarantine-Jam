@@ -19,6 +19,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Sprite Dairy;
+    public Sprite Meat;
+    public Sprite Sweet;
+    public Sprite Detergents;
+    public Sprite Grains;
+    public Sprite ToiletSupplies;
+    public Sprite Vegies;
+    public Sprite Fruits;
+
+    private void Start()
+    {
+        StartGame();
+    }
+
     public void WinGame()
     {
 

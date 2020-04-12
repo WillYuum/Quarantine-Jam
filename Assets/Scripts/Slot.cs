@@ -10,6 +10,7 @@ public class Slot : MonoBehaviour
     [HideInInspector]public int currentAmountOfProduct = 0;
     [HideInInspector]public Product productType;
 
+
     private void Start()
     {
         isEmpty = true;
@@ -40,11 +41,14 @@ public class Slot : MonoBehaviour
     {
         productSprite.GetComponent<SpriteRenderer>().sprite = productImage;
     }
-
     private void RemoveImageProduct()
     {
-        productSprite.GetComponent<SpriteRenderer>().sprite = null;
+        productSprite = null;
     }
 
+    public void SetAmountOfProduct(int amount)
+    {
+        textAmountOfProduct.text = amount.ToString();
+    }
 
 }

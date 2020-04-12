@@ -41,7 +41,6 @@ public class ProductsStock : MonoBehaviour
 
     private void DecreaseStockAmount(int amount)
     {
-        Debug.Log("decreased stock");
         currentStockAmount -= amount;
         //decrease the slider 
         slider.value = currentStockAmount / maxStockAmount;

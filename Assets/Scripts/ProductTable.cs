@@ -7,8 +7,13 @@ public enum Product
 {
     None,
     Dairy,
-    Meat,
-    fish
+    Meat_Poltry,
+    Sweet,
+    Detergents,
+    Grains,
+    ToiletSupplies,
+    Vegies,
+    Fruits
 }
 
 public class ProductTable : MonoBehaviour
@@ -16,12 +21,12 @@ public class ProductTable : MonoBehaviour
 
 
     public Product assignedProductTable;
-    public GameObject productSprite;
+    public Sprite productSprite;
   
     public void TakeProduct()
     {
         Debug.Log($"took product from {assignedProductTable}");
-        BagSlot.instance.AddToBag(assignedProductTable, productSprite.GetComponent<SpriteRenderer>().sprite);
+        BagSlot.instance.AddToBag(assignedProductTable, productSprite);
     }
 
     public void ThrowProductBack()

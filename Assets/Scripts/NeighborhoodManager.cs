@@ -25,7 +25,7 @@ public class NeighborhoodManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+    
     }
 
     public float spawnDelay = 4;
@@ -43,19 +43,26 @@ public class NeighborhoodManager : MonoBehaviour
         {
             if (families[i].familyOrdered == false)
             {
-                families[i].CreateOrder();
+                Order[] orders = families[i].CreateOrder();
+                Debug.Log(orders.Length);
+
+                for (int y = 0; y < orders.Length; y++)
+                {
+                    Order order = orders[y];
+                    ListDisplay.instance.AssignOrdersInSlot(order.amountOfProductOrdered,order.productSprite);
+
+                }
             }
 
         }
         amountOfFamilyToSpawn += 1;
     }
-
+    
 
     public IEnumerator SpawnOrdersForFamilies()
     {
         yield return new WaitForSeconds(spawnDelay);
         FamilyWantToOrder();
-
         //render showing the orders
     }
 }
