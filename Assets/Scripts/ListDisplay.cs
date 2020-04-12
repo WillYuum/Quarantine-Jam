@@ -20,10 +20,10 @@ public class ListDisplay : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public void AddProductToBag()
+    List<Order> currentOrders;
+    public void AddProductToBag(Product productToAdd)
     {
-        List<Order> currentOrders = NeighborhoodManager.instance.currentOrders;
+        currentOrders = NeighborhoodManager.instance.currentOrders;
         for (int i = 0; i < currentOrders.Count; i++)
         {
 
@@ -33,9 +33,13 @@ public class ListDisplay : MonoBehaviour
             Slot slot = slots[i];
             if (slot.isSatisfied == false)
             {
-                if (slot.productType == order.productOrdered)
+                if (slot.productType == productToAdd)
                 {
                     slots[i].IncreaseAmountOfProduct();
+                    if(slot.currentAmountOfProduct >= currentOrders[i].amountOfProductOrdered)
+                    {
+                        slot.isSatisfied = true;
+                    }
                 }
             }
             else
@@ -54,13 +58,15 @@ public class ListDisplay : MonoBehaviour
 
     public void AssignOrdersInSlot(int amoutOfProductOrdered, Sprite productSprite)
     {
+        Debug.Log("DEBUG " + productSprite.name);
         for (int i = 0; i < slots.Count; i++)
         {
             Slot slot = slots[i];
-            slot.AddImage(productSprite);
-            slot.SetAmountOfProduct(amoutOfProductOrdered);
-            if(NeighborhoodManager.instance.currentOrders.Count <= i)
+            if (slot.isEmpty)
             {
+                slot.isEmpty = false;
+                slot.AddImage(productSprite);
+                slot.SetAmountOfProduct(amoutOfProductOrdered);
                 break;
             }
         }

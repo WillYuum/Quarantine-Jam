@@ -26,7 +26,7 @@ public class ProductTable : MonoBehaviour
     public void TakeProduct()
     {
         Debug.Log($"took product from {assignedProductTable}");
-        ListDisplay.instance.AddProductToBag();
+        ListDisplay.instance.AddProductToBag(assignedProductTable);
     }
 
     public void ThrowProductBack()

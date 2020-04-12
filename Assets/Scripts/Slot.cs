@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
+    [HideInInspector] public bool isEmpty = true;
     [HideInInspector] public bool isSatisfied;
     public GameObject productSprite;
     public TextMesh currentProductAmount;
