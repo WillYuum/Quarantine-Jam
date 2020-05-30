@@ -22,14 +22,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Sprite Dairy;
-    public Sprite Meat;
-    public Sprite Sweet;
-    public Sprite Detergents;
-    public Sprite Grains;
-    public Sprite ToiletSupplies;
-    public Sprite Vegies;
-    public Sprite Fruits;
+    [HideInInspector] public Sprite Dairy;
+    [HideInInspector] public Sprite Meat;
+    [HideInInspector] public Sprite Sweet;
+    [HideInInspector] public Sprite Detergents;
+    [HideInInspector] public Sprite Grains;
+    [HideInInspector] public Sprite ToiletSupplies;
+    [HideInInspector] public Sprite Vegies;
+    [HideInInspector] public Sprite Fruits;
 
     private void Start()
     {
